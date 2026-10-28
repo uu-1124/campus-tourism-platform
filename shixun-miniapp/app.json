@@ -1,0 +1,36 @@
+{
+  "pages": [
+    "pages/welcome/welcome",
+    "pages/index/index",
+    "pages/recognition/recognition",
+    "pages/scenic/scenic",
+    "pages/success/success",
+    "pages/detail/detail",
+    "pages/vr-intro/vr-intro",
+    "pages/videos/videos",
+    "pages/failure/failure",
+    "pages/activities/activities",
+    "pages/activity-detail/activity-detail",
+    "pages/vr/vr",
+    "pages/vr-viewer/vr-viewer"
+  ],
+  "window": {
+    "navigationBarTitleText": "山西农业大学",
+    "navigationBarBackgroundColor": "#0c5b46",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f4f7f5"
+  },
+  "tabBar": {
+    "color": "#7a8581",
+    "selectedColor": "#0c7456",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      { "pagePath": "pages/index/index", "text": "首页" },
+      { "pagePath": "pages/recognition/recognition", "text": "识别" },
+      { "pagePath": "pages/scenic/scenic", "text": "校园" }
+    ]
+  },
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents"
+}

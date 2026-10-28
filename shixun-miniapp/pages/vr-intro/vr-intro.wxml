@@ -1,0 +1,16 @@
+<view class="vr-intro" wx:if="{{item}}">
+  <image class="cover" src="{{image}}" mode="aspectFill" binderror="imageError" />
+  <view class="intro-body">
+    <text class="eyebrow">VIRTUAL CAMPUS TOUR</text>
+    <text class="title">{{item.name}} VR漫游</text>
+    <text class="english">{{item.englishName || 'SHANXI AGRICULTURAL UNIVERSITY'}}</text>
+    <view class="divider"></view>
+    <text class="description">通过全景视角了解建筑外观、校园环境与历史文化。当前页面提供建筑漫游介绍，已发布全景资源的建筑可以继续进入互动浏览。</text>
+    <view class="availability {{item.isVr === 1 && item.vrId ? 'available' : ''}}">
+      <text>{{item.isVr === 1 && item.vrId ? '该建筑已配置互动全景' : '该建筑的互动全景正在建设中'}}</text>
+    </view>
+    <button wx:if="{{item.isVr === 1 && item.vrId}}" class="primary" bindtap="enterVr">进入互动全景</button>
+    <button class="secondary" bindtap="backToDetail">返回建筑详情</button>
+  </view>
+</view>
+<view wx:else class="empty"><text>{{loading ? '正在加载 VR 介绍...' : error}}</text><button wx:if="{{!loading}}" bindtap="load">重新加载</button></view>

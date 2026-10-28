@@ -1,0 +1,10 @@
+<view class="scenic-page">
+  <view class="search-row"><view class="search-box"><text>⌕</text><input value="{{keyword}}" placeholder="请输入关键字搜索建筑" bindinput="onInput" bindconfirm="search" confirm-type="search" /></view><button bindtap="search">搜索</button></view>
+  <view class="filters"><view class="{{activeFilter === 'all' ? 'active' : ''}}" data-filter="all" bindtap="setFilter">全部</view><view class="{{activeFilter === 'vr' ? 'active' : ''}}" data-filter="vr" bindtap="setFilter">VR阅读</view><view class="{{activeFilter === 'red' ? 'active' : ''}}" data-filter="red" bindtap="setFilter">红色印记</view><view class="{{activeFilter === 'near' ? 'active' : ''}}" data-filter="near" bindtap="setFilter">⌖ 附近</view></view>
+  <view wx:if="{{loading}}" class="empty">正在加载校园建筑...</view>
+  <view wx:elif="{{list.length}}" class="masonry">
+    <view class="column"><view wx:for="{{left}}" wx:key="id" class="building-card" data-id="{{item.id}}" bindtap="openDetail"><image class="{{item.imageClass}}" src="{{item.image}}" mode="aspectFill" data-column="left" data-index="{{index}}" binderror="imageError" /><view class="card-copy"><text>{{item.name}}</text><text>{{item.englishName || 'SHANXI AGRICULTURAL UNIVERSITY'}}</text></view></view></view>
+    <view class="column"><view wx:for="{{right}}" wx:key="id" class="building-card" data-id="{{item.id}}" bindtap="openDetail"><image class="{{item.imageClass}}" src="{{item.image}}" mode="aspectFill" data-column="right" data-index="{{index}}" binderror="imageError" /><view class="card-copy"><text>{{item.name}}</text><text>{{item.englishName || 'SHANXI AGRICULTURAL UNIVERSITY'}}</text></view></view></view>
+  </view>
+  <view wx:else class="empty">没有找到符合条件的建筑</view>
+</view>

@@ -1,0 +1,43 @@
+<view class="detail-page" wx:if="{{item}}">
+  <image class="hero" src="{{hero}}" mode="aspectFill" binderror="imageError" />
+  <view class="page-inner">
+    <view class="identity">
+      <text class="identity-name">{{item.name}}</text>
+      <text class="identity-english">{{item.englishName || 'SXAU'}}</text>
+    </view>
+    <view wx:if="{{recognized}}" class="recognized">已通过拍照识别找到这座建筑</view>
+    <view class="tool-row">
+      <button class="tool" bindtap="toggleAudio" aria-label="{{playing ? '暂停语音导览' : '播放语音导览'}}">
+        <text class="tool-icon">{{audioLoading ? '···' : playing ? 'Ⅱ' : '♫'}}</text><text>{{audioLoading ? '加载中' : playing ? '暂停导览' : '语音导览'}}</text>
+      </button>
+      <button class="tool" bindtap="openVrIntro" aria-label="查看VR漫游介绍"><text class="tool-icon">◉</text><text>VR漫游</text></button>
+      <button class="tool" bindtap="openMap" aria-label="查看建筑位置"><text class="tool-icon">⌖</text><text>景点导航</text></button>
+    </view>
+    <view class="language-row"><view class="language-switch">
+      <button class="{{language === 'zh' ? 'selected' : ''}}" data-language="zh" bindtap="switchLanguage">中</button>
+      <button class="{{language === 'en' ? 'selected' : ''}}" data-language="en" bindtap="switchLanguage">EN</button>
+    </view></view>
+    <view class="facts" wx:if="{{language === 'zh'}}">
+      <view class="fact"><text class="fact-label">保护级别</text><text class="fact-value">{{item.level || '暂无资料'}}</text></view>
+      <view class="fact"><text class="fact-label">建筑地址</text><text class="fact-value">{{item.remarks || item.address || '山西农业大学校园（点击景点导航查看具体位置）'}}</text></view>
+      <view class="fact"><text class="fact-label">开放时间</text><text class="fact-value">{{item.chineseOpenTime || '请以校方现场公告为准'}}</text></view>
+      <view class="fact"><text class="fact-label">门票信息</text><text class="fact-value">{{item.ticket || '暂无资料'}}</text></view>
+      <view class="fact"><text class="fact-label">联系电话</text><text class="fact-value {{item.phoneNumber ? 'phone' : ''}}" bindtap="callPhone">{{item.phoneNumber || '暂无资料'}}</text></view>
+    </view>
+    <view class="facts" wx:else>
+      <view class="fact"><text class="fact-label">Heritage</text><text class="fact-value">{{item.englishLevel || 'Not available'}}</text></view>
+      <view class="fact"><text class="fact-label">Address</text><text class="fact-value">{{item.address || 'Shanxi Agricultural University (see map for exact location)'}}</text></view>
+      <view class="fact"><text class="fact-label">Hours</text><text class="fact-value">{{item.englishOpenTime || 'Please check campus notices'}}</text></view>
+      <view class="fact"><text class="fact-label">Admission</text><text class="fact-value">{{item.englishTicket || 'Not available'}}</text></view>
+      <view class="fact"><text class="fact-label">Phone</text><text class="fact-value {{item.phoneNumber ? 'phone' : ''}}" bindtap="callPhone">{{item.phoneNumber || 'Not available'}}</text></view>
+    </view>
+    <view class="article">
+      <view class="article-title">{{language === 'zh' ? '建筑介绍' : 'About this building'}}</view>
+      <rich-text wx:if="{{language === 'zh' && (item.content || item.introduction)}}" nodes="{{item.content || item.introduction}}" />
+      <text wx:elif="{{language === 'en'}}" class="article-text">{{item.englishIntroduction || 'English introduction is not available yet.'}}</text>
+      <text wx:else class="article-text">暂无建筑介绍</text>
+      <video wx:if="{{item.videoUrl}}" class="building-video" src="{{item.videoUrl}}" poster="{{item.videoCover}}" controls />
+    </view>
+  </view>
+</view>
+<view wx:else class="empty"><text>{{loading ? '正在加载建筑资料...' : error}}</text><button wx:if="{{!loading}}" bindtap="load">重新加载</button></view>

@@ -1,0 +1,37 @@
+# ---------- IDE / 本地环境 ----------
+.idea/
+.vscode/
+*.iml
+**/.git.bak/
+
+# ---------- 本地数据 / 日志 / 备份 ----------
+.local/
+backups/
+debug.log
+dump.rdb
+shixun-keycode.zip
+*.log
+dev/data/
+dev/runtime-logs/
+shixun-server/dev/data/
+shixun-server/dev/.idea/
+
+# ---------- 前端 ----------
+node_modules/
+dist/
+
+# ---------- 后端构建产物 ----------
+target/
+*.class
+
+# ---------- 敏感配置（含真实密钥，不随仓库分发；参考同目录 *.example） ----------
+shixun-server/config/application-dev.yml
+shixun-server/ruoyi-admin/src/main/resources/application-dev.yml
+shixun-server/ruoyi-admin/src/main/resources/application-test.yml
+
+# ---------- 本地专用启动脚本（含本机路径与数据库密码，不随仓库分发） ----------
+start-project.ps1
+
+# ---------- 操作系统 ----------
+Thumbs.db
+.DS_Store

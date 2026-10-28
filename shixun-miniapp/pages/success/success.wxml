@@ -1,0 +1,17 @@
+<view class="success-page">
+  <view wx:if="{{loading}}" class="status-message">正在加载识别结果...</view>
+  <view wx:elif="{{error}}" class="status-message error" bindtap="load">{{error}}，点击重试</view>
+  <block wx:elif="{{building}}">
+    <view class="success-banner"><text class="check">✓</text><text>识别成功，为你找到这座建筑</text></view>
+    <image class="recognized-image" src="{{image}}" mode="aspectFill" binderror="imageError" />
+    <view class="building-summary">
+      <text class="building-name">{{building.name}}</text>
+      <text class="building-english">{{building.englishName || 'SHANXI AGRICULTURAL UNIVERSITY'}}</text>
+    </view>
+    <button class="detail-button" bindtap="openDetail">查看完整详情</button>
+    <view class="success-actions">
+      <button bindtap="openMap"><text>⌖</text> 地图导航</button>
+      <button bindtap="retry"><text>▣</text> 再拍一次</button>
+    </view>
+  </block>
+</view>

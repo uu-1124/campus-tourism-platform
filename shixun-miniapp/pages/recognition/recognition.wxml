@@ -1,0 +1,42 @@
+<view class="page recognition">
+  <!-- 背景光斑装饰 -->
+  <view class="bg-decor">
+    <view class="blob blob-a"></view>
+    <view class="blob blob-b"></view>
+    <view class="blob blob-c"></view>
+  </view>
+
+  <!-- 页面头部 -->
+  <view class="page-head">
+    <view class="head-badge">校园建筑 · 智能识别</view>
+    <view class="head-title">拍照识建筑</view>
+    <view class="head-sub">对准校园里的建筑，解锁它的百年故事</view>
+  </view>
+
+  <!-- 取景面板 -->
+  <view class="camera-panel">
+    <view class="aurora aurora-a"></view>
+    <view class="aurora aurora-b"></view>
+    <view class="scan-line"></view>
+    <view class="corners"><view></view><view></view><view></view><view></view></view>
+    <image wx:if="{{photo}}" src="{{photo}}" mode="aspectFill" class="photo-view" />
+    <view wx:else class="camera-empty">
+      <view class="lens">🏛️</view>
+      <text class="empty-title">将建筑放入取景框</text>
+      <text class="empty-sub">保持画面清晰 · 尽量正对建筑</text>
+    </view>
+    <view wx:if="{{loading}}" class="recognizing">
+      <view class="loading-ring"></view>
+      <text>正在识别校园建筑…</text>
+    </view>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="actions">
+    <button class="btn btn-primary" bindtap="takePhoto" disabled="{{loading || choosing}}">拍照识别</button>
+    <button class="btn btn-ghost" bindtap="chooseAlbum" disabled="{{loading || choosing}}">从相册选择</button>
+  </view>
+
+  <!-- 底部提示 -->
+  <view class="foot-note">支持 JPG / PNG · 单张不超过 10MB</view>
+</view>

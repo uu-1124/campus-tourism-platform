@@ -1,0 +1,9 @@
+<view class="vr-list">
+  <view wx:if="{{loading}}" class="empty">正在加载 VR 全景...</view>
+  <view wx:elif="{{error}}" class="empty" bindtap="load">加载失败，点击重试</view>
+  <view wx:elif="{{!list.length}}" class="empty">暂无已发布的 VR 全景</view>
+  <view wx:for="{{list}}" wx:key="id" class="vr-item" data-id="{{item.id}}" bindtap="open">
+    <image src="{{item.image}}" mode="aspectFill" data-index="{{index}}" binderror="imageError" />
+    <view class="vr-info"><text class="vr-name">{{item.name}}</text><text class="vr-label">360° 全景</text></view>
+  </view>
+</view>

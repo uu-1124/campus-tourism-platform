@@ -1,0 +1,11 @@
+<view class="activities">
+  <view class="recommend-heading"><text>为您推荐</text><text>{{list.length}} 项校园活动</text></view>
+  <view class="modes"><button class="{{mode === 'current' ? 'active' : ''}}" data-mode="current" bindtap="changeMode">当前活动</button><button class="{{mode === 'all' ? 'active' : ''}}" data-mode="all" bindtap="changeMode">全部活动</button></view>
+  <view wx:if="{{loading}}" class="empty">正在加载活动...</view>
+  <view wx:elif="{{error}}" class="empty" bindtap="load">活动加载失败，点击重试</view>
+  <view wx:elif="{{!list.length}}" class="empty">暂无活动</view>
+  <view wx:for="{{list}}" wx:key="id" class="activity" data-id="{{item.id}}" bindtap="openDetail">
+    <image src="{{item.image}}" mode="aspectFill" data-index="{{index}}" binderror="imageError" />
+    <view class="activity-body"><view><text class="name">{{item.name}}</text><text class="status">{{item.stateLabel}}</text><text class="date" wx:if="{{item.dateLabel}}">{{item.dateLabel}}</text></view><text class="activity-arrow">›</text></view>
+  </view>
+</view>

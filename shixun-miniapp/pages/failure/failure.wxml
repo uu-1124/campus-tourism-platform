@@ -1,0 +1,26 @@
+<view class="failure">
+  <view class="photo-wrap">
+    <image wx:if="{{photo && !photoError}}" class="submitted" src="{{photo}}" mode="aspectFill" binderror="submittedImageError" />
+    <view wx:else class="submitted-placeholder"><text class="placeholder-icon">□</text><text>本次识别照片</text></view>
+    <view class="failure-badge"><text>×</text></view>
+  </view>
+
+  <view class="failure-summary">
+    <text class="failure-title">{{reason === 'service' ? '识别服务暂时不可用' : '暂未识别出该建筑'}}</text>
+    <text class="failure-copy">{{reason === 'service' ? '请检查网络后稍候重试，本次照片不会保存。' : '可以换个角度重新拍摄，尽量让建筑主体完整清晰。'}}</text>
+  </view>
+
+  <view class="commands"><button bindtap="retry" class="retry">重新识别</button><button bindtap="browse" class="browse">浏览校园建筑</button></view>
+
+  <view class="recommend-header"><text>你可能想找</text><text>校园建筑推荐</text></view>
+  <view wx:if="{{loading}}" class="empty"><text class="loading-dot"></text>正在加载推荐</view>
+  <view wx:elif="{{error}}" class="empty retry-load" bindtap="loadRecommendations">推荐加载失败，点击重试</view>
+  <view wx:elif="{{!list.length}}" class="empty">暂无可推荐的校园建筑</view>
+  <view wx:if="{{primary}}" class="primary-result" data-id="{{primary.id}}" bindtap="openDetail">
+    <image src="{{primary.image}}" mode="aspectFill" data-index="0" binderror="imageError" />
+    <view class="primary-meta"><text>{{primary.name}}</text><text>查看详情 ›</text></view>
+  </view>
+  <view class="similar-grid">
+    <view wx:for="{{similar}}" wx:key="id" class="similar-item" data-id="{{item.id}}" bindtap="openDetail"><image src="{{item.image}}" mode="aspectFill" data-index="{{index + 1}}" binderror="imageError" /><view><text>{{item.name}}</text><text>查看建筑</text></view></view>
+  </view>
+</view>

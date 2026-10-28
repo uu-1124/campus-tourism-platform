@@ -1,0 +1,82 @@
+.welcome {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  background: #e8eeeb;
+}
+
+.building-photo {
+  position: absolute;
+  left: -6%;
+  top: -5%;
+  width: 112%;
+  height: 110%;
+  transform-origin: 50% 54%;
+  animation: welcome-camera 18s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes welcome-camera {
+  0% { transform: scale(1.01) translate3d(-1.4%, .5%, 0); }
+  100% { transform: scale(1.16) translate3d(2.2%, -1.5%, 0); }
+}
+
+.browse {
+  position: absolute;
+  right: 36rpx;
+  top: 140rpx;
+  display: flex;
+  width: 94rpx;
+  height: 94rpx;
+  align-items: center;
+  justify-content: center;
+  padding: 28rpx;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .94);
+  box-shadow: 0 3rpx 18rpx rgba(0, 0, 0, .12);
+}
+
+.grid-icon {
+  display: grid;
+  width: 34rpx;
+  height: 34rpx;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rpx;
+}
+
+.grid-icon view {
+  border-radius: 3rpx;
+  background: #243534;
+}
+
+.welcome-bottom {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 55rpx 32rpx calc(42rpx + env(safe-area-inset-bottom));
+  background: linear-gradient(transparent, rgba(0, 0, 0, .22));
+}
+
+.explore {
+  width: 390rpx;
+  max-width: 80%;
+  height: 106rpx;
+  border-radius: 60rpx;
+  background: rgba(255, 255, 255, .94);
+  color: #23342f;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, .12);
+  font-family: serif;
+  font-size: 42rpx;
+  line-height: 106rpx;
+}
+
+.university {
+  margin-top: 34rpx;
+  color: #fff;
+  font-size: 25rpx;
+  text-shadow: 0 1rpx 8rpx rgba(0, 0, 0, .6);
+}

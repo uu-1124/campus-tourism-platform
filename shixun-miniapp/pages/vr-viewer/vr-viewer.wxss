@@ -1,0 +1,1 @@
+.empty{padding:100rpx 32rpx;text-align:center;color:#5d6e65}.empty text{display:block}.empty button{margin-top:34rpx;width:240rpx;background:#0c654d;color:#fff;font-size:26rpx;border-radius:6rpx}

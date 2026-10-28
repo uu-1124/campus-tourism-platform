@@ -1,0 +1,7 @@
+<view class="welcome">
+  <image class="building-photo" src="{{hero.image}}" mode="aspectFill" binderror="imageError" />
+  <button class="browse" bindtap="browse" aria-label="浏览校园建筑"><view class="grid-icon"><view></view><view></view><view></view><view></view></view></button>
+  <view class="welcome-bottom">
+    <button class="explore" bindtap="explore">开始探索</button><text class="university">山西农业大学</text>
+  </view>
+</view>

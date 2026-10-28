@@ -1,0 +1,26 @@
+<view class="home">
+  <view class="hero">
+    <swiper class="hero-swiper" indicator-dots autoplay circular interval="4500" duration="650" indicator-color="rgba(255,255,255,.5)" indicator-active-color="#ffffff">
+      <swiper-item wx:for="{{slides}}" wx:key="id"><image class="hero-image" src="{{item.image}}" mode="aspectFill" data-field="slides" data-index="{{index}}" binderror="imageError" /></swiper-item>
+    </swiper>
+  </view>
+  <view wx:if="{{recommendedActivity}}" class="recommendation" bindtap="openActivity"><text class="recommend-label">为您推荐</text><text class="recommend-topic">{{recommendedActivity.name}}</text><text class="section-link">查看全部 ›</text></view>
+  <view class="section hot-section">
+    <view class="section-heading"><text class="section-name">热剧游农大</text><text class="section-link" bindtap="goVideos">查看全部 ›</text></view>
+    <view wx:if="{{hotVideos.length}}" class="video-grid">
+      <view wx:for="{{hotVideos}}" wx:key="id" class="video-card" data-id="{{item.id}}" bindtap="openVideo">
+        <view class="video-cover"><image src="{{item.image}}" mode="aspectFill" data-field="hotVideos" data-index="{{index}}" binderror="imageError" /><view class="play-icon">▶</view></view>
+        <text class="video-title">{{item.title}}</text><text class="video-subtitle">{{item.subtitle}}</text>
+      </view>
+    </view>
+    <view wx:elif="{{errors.video}}" class="empty" bindtap="loadHome">视频加载失败，点击重试</view><view wx:else class="empty">暂无宣传视频</view>
+  </view>
+  <view wx:if="{{featuredBuilding}}" class="section building-section">
+    <view class="section-heading"><text class="section-name">建筑可阅读</text><text class="section-link" bindtap="goScenic">查看全部 ›</text></view>
+    <view class="building-feature" bindtap="openBuilding"><image src="{{featuredBuilding.image}}" mode="aspectFill" data-field="featuredBuilding" binderror="imageError" /><view class="building-copy"><text>{{featuredBuilding.name}}</text><text>{{featuredBuilding.englishName || 'SHANXI AGRICULTURAL UNIVERSITY'}}</text></view></view>
+  </view>
+  <view class="quick-nav">
+    <button bindtap="goRecognition"><text class="quick-icon">▣</text><text>拍照识别</text></button><button bindtap="goScenic"><text class="quick-icon">▥</text><text>建筑阅读</text></button><button bindtap="goActivities"><text class="quick-icon">◇</text><text>校园活动</text></button><button bindtap="goVr"><text class="quick-icon">360°</text><text>VR 校园</text></button>
+  </view>
+  <view class="footer"><text>山西农业大学</text><text>SHANXI AGRICULTURAL UNIVERSITY</text></view>
+</view>

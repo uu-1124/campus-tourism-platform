@@ -1,0 +1,2 @@
+<web-view wx:if="{{url}}" src="{{url}}" bindload="onVrLoaded" binderror="onVrError" />
+<view wx:else class="empty"><text>{{loading ? '正在加载 VR 全景...' : error}}</text><button wx:if="{{!loading}}" bindtap="load">重新加载</button></view>

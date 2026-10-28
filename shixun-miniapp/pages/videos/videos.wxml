@@ -1,0 +1,16 @@
+<view class="videos-page">
+  <view wx:if="{{loading}}" class="empty">正在加载宣传视频...</view>
+  <view wx:elif="{{error}}" class="empty retry" bindtap="load">加载失败，点击重试</view>
+  <block wx:elif="{{selected}}">
+    <video class="player" src="{{selected.src}}" poster="{{selected.image}}" controls autoplay object-fit="contain" binderror="videoError" />
+    <view class="video-copy"><text>{{selected.title}}</text><text>{{selected.subtitle}}</text></view>
+    <view class="list-heading">宣传视频</view>
+    <view class="video-list">
+      <view wx:for="{{videos}}" wx:key="id" class="video-item {{selected.id === item.id ? 'active' : ''}}" data-id="{{item.id}}" bindtap="selectVideo">
+        <image src="{{item.image}}" mode="aspectFill" />
+        <view><text>{{item.title}}</text><text>{{item.subtitle}}</text></view>
+      </view>
+    </view>
+  </block>
+  <view wx:else class="empty">暂无宣传视频</view>
+</view>

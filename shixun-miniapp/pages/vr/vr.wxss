@@ -1,0 +1,1 @@
+.vr-list{padding:24rpx}.vr-item{background:#fff;margin-bottom:20rpx;border-radius:6rpx;overflow:hidden}.vr-item image{width:100%;height:390rpx}.vr-info{display:flex;align-items:center;justify-content:space-between;padding:22rpx}.vr-name{font-size:30rpx;font-weight:600}.vr-label{font-size:22rpx;color:#9b6e39;flex-shrink:0;margin-left:12rpx}

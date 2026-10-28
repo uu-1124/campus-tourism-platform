@@ -1,0 +1,54 @@
+# 测试环境配置（复制本文件为 application-test.yml 并填写真实密钥）
+spring:
+  datasource:
+    druid:
+      # 主库数据源
+      master:
+        url: jdbc:mysql://127.0.0.1:3306/travel?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2B8&autoReconnect=true&useSSL=false
+        username: <your-db-user>
+        password: <your-db-password>
+  # redis 配置
+  redis:
+    host: <your-redis-host>
+    port: 6379
+    password: <your-redis-password>
+    database: 3
+# 微信小程序相关配置
+wx:
+  miniapp:
+    configs:
+      - appid: <your-wx-miniapp-appid>
+        secret: <your-wx-miniapp-secret>
+        token: pengzhuang2020
+        aesKey: <your-wx-aes-key>
+        msgDataFormat: JSON
+  mp:
+    useRedis: true
+    configs:
+      - appId: <your-mp-appid>
+        secret: <your-mp-appsecret>
+        token: test
+        aesKey: test
+  pay:
+    configs:
+      - appId: <your-pay-appid>
+        mchId: <your-mch-id>
+        mchKey: <your-mch-key>
+        subAppId:
+        subMchId:
+        keyPath:
+      - appId: <your-pay-appid-2>
+        mchId: <your-mch-id>
+        mchKey: <your-mch-key>
+        subAppId:
+        subMchId:
+        keyPath:
+# 百度图片搜索
+baidu:
+  app-id: <your-baidu-app-id>
+  api-key: <your-baidu-api-key>
+  secret-key: <your-baidu-secret-key>
+travel:
+  path: /data/xuhui_travel
+  vrUrl: https://ar-travel-file.1jiaohu.com/vtour/tour.html
+  appointment:

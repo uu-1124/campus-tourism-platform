@@ -1,0 +1,18 @@
+<view class="activity-detail" wx:if="{{item}}">
+  <image class="hero" src="{{item.hero}}" mode="widthFix" binderror="imageError" />
+  <view class="article">
+    <view class="article-meta">
+      <text class="state">{{item.stateLabel}}</text>
+      <text wx:if="{{item.dateLabel}}" class="date">{{item.dateLabel}}</text>
+    </view>
+    <view class="title">{{item.name}}</view>
+    <view wx:if="{{item.subTitle}}" class="subtitle">{{item.subTitle}}</view>
+    <view class="divider"></view>
+    <rich-text class="body" nodes="{{item.body}}"></rich-text>
+  </view>
+</view>
+<view wx:else class="empty-state">
+  <text>{{loading ? '正在加载活动...' : error}}</text>
+  <button wx:if="{{!loading}}" bindtap="load">重新加载</button>
+</view>
+
